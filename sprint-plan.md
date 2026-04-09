@@ -1,46 +1,75 @@
+
+---
+
+# ✅ 2. sprint-plan.md (create new file)
+
+Create file:
+👉 `sprint-plan.md`
+
+Paste this:
+
+```md
 # Sprint Plan - OpenCart Selenium Automation Framework
 
-## Sprint 1 - Core Framework Setup
-Delivered a working Selenium automation framework for a core OpenCart purchase journey.
+---
 
-### Scope
+## 🟢 Sprint 1 - Core Framework Setup
+
+### Objective
+Build a working automation framework for a business-critical user journey.
+
+### Delivered
 - Maven project setup
-- Java 21 project alignment
+- Java 21 configuration
 - Selenium WebDriver + TestNG integration
-- Page Object Model structure
-- Config-driven test data and locators
-- Automated E2E flow:
-  - Login
-  - Select Mac product
-  - Add to cart
-  - Checkout
-  - Shipping
-  - Order confirmation
-  - Logout
+- Page Object Model (POM) structure
+- Config-driven approach using properties files
+
+### Automated Flow
+- Login
+- Select Mac product
+- Add to cart
+- Checkout
+- Shipping
+- Order confirmation
+- Logout
 
 ---
 
-## Sprint 2 - Stabilization and Reusability
-Focus on reducing flaky execution and improving maintainability.
+## 🟡 Sprint 2 - Stability and Reusability
+
+### Objective
+Improve framework reliability and reduce flaky tests.
 
 ### Planned Enhancements
-- Replace Thread.sleep() with WebDriverWait
+- Replace `Thread.sleep()` with `WebDriverWait`
 - Improve synchronization handling
-- Refactor repeated code into reusable utilities
-- Clean package/file placement
-- Improve naming and readability
-- Support browser selection via config
+- Refactor reusable methods
+- Clean code structure and package organization
+- Improve naming conventions
+- Add browser selection via config
 
 ---
 
-## Sprint 3 - Reporting and Scalability
-Focus on making the framework easier to execute, monitor, and expand.
+## 🔵 Sprint 3 - Scalability and Reporting
+
+### Objective
+Prepare framework for scale and enterprise-level usage.
 
 ### Planned Enhancements
-- Add more business flows
-- Organize execution with TestNG suites
-- Add smoke/regression grouping
+- Add multiple test scenarios
+- Organize execution via TestNG suites
+- Add smoke and regression grouping
 - Add reporting
-- Add screenshot capture on failures
+- Capture screenshots on failure
 - Prepare for CI/CD integration
-- Prepare for future BDD/API expansion
+- Extend to API and BDD automation
+
+---
+
+## 🎯 Summary
+
+This framework was developed iteratively:
+- Sprint 1 → Functional automation
+- Sprint 2 → Stability improvements
+- Sprint 3 → Scalability and visibility
