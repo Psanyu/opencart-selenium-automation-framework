@@ -1,29 +1,42 @@
 # OpenCart Selenium Automation Framework
 
-A Selenium automation framework for OpenCart built using Java, Maven, and TestNG.
+This project is a Selenium-based automation framework built using Java, Maven, and TestNG.  
+It automates an end-to-end user journey on the OpenCart application.
 
-## Tech Stack
+---
+
+## 🚀 Tech Stack
 - Java 21
 - Selenium WebDriver
 - TestNG
 - Maven
 
-## Framework Structure
-- `baseopc` - base setup and driver initialization
-- `pagesopc` - page object classes
-- `utilitiesopc` - config and reusable utilities
-- `testsopc` - test execution classes
-- `src/test/resources` - config and element properties
+---
 
-## Covered Flow
+## 🧱 Framework Design
+The framework follows the Page Object Model (POM) design pattern.
+
+### Structure
+- `baseopc` → Driver setup and base classes
+- `pagesopc` → Page Object classes
+- `utilitiesopc` → Config handling and reusable utilities
+- `testsopc` → Test execution classes
+- `resources` → Config and locator properties
+
+---
+
+## 🧪 Test Flow Covered
 - Login
 - Select Mac product
 - Add to cart
 - Checkout
-- Shipping
-- Order confirmation
+- Enter shipping details
+- Confirm order
 - Logout
 
-## Run
+---
+
+## ▶️ How to Run Tests
+
 ```bash
 mvn test
