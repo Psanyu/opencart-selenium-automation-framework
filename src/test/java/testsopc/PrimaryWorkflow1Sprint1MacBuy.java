@@ -9,7 +9,7 @@ import pagesopc.SShipping;
 import pagesopc.SelectItem;
 import pagesopc.ShoppingCart;
 
-public class PrimaryWorkflowSprint1MacBuy extends Baseopc {
+public class PrimaryWorkflow1Sprint1MacBuy extends Baseopc {
 
 @Test
     public void verifyorderconfirmation() throws Exception {

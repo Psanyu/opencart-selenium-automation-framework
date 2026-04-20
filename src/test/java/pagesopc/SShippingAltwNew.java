@@ -1,6 +1,7 @@
 package pagesopc;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -153,7 +154,12 @@ public class SShippingAltwNew {
     public void confirmorder() throws Exception {
         
         WebElement confirmorder = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("confirmor"))));
-        confirmorder.click();
+        JavascriptExecutor js2= (JavascriptExecutor) dr;
+        try {
+        	confirmorder.click();
+        } catch (Exception e) {
+            js2.executeScript("arguments[0].click();", confirmorder);
+        }
 
         Thread.sleep(5000);
         WebElement successMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("contentid"))));
