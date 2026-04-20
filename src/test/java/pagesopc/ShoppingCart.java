@@ -1,6 +1,7 @@
 package pagesopc;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -17,31 +18,38 @@ public class ShoppingCart{
 
     WebDriver dr;
     Config elements;
+    WebDriverWait wait;
 
     public ShoppingCart(WebDriver dr) throws Exception {
         this.dr = dr;
         elements = new Config("elements.properties");
+        wait = new WebDriverWait(dr, Duration.ofSeconds(10));
     }
 
     public void adcart() {
 
-        WebDriverWait wait = new WebDriverWait(dr, Duration.ofSeconds(10));
-
         WebElement addtocart = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("adtc"))));
 
-        addtocart.click();
+        ((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", addtocart);
+
+        try {
+            addtocart.click();
+        } catch (Exception e) {
+            ((JavascriptExecutor) dr).executeScript("arguments[0].click();", addtocart);
+        }
         
         }
 
     
-    public void chkout(String i, String sci, String szi, String zci, String cc) throws Exception {
-
-        WebDriverWait wait = new WebDriverWait(dr, Duration.ofSeconds(10));
+    public void chkoutqty(String i) throws Exception {     
               
         WebElement quantity = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("itq"))));
         
         quantity.clear();
         quantity.sendKeys(i);
+    }
+        
+    public void chkouttax(String sci, String szi, String zci) throws Exception {
         
         WebElement estimatetax = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("estax"))));
         estimatetax.click();
@@ -79,6 +87,9 @@ public class ShoppingCart{
         
         WebElement asp = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elements.get("applyshipping"))));
         asp.click();
+    }
+    
+    public void chkoutcoupon(String cc) throws Exception {
         
         Thread.sleep(3000);
         
@@ -92,9 +103,19 @@ public class ShoppingCart{
         WebElement apcoupon = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elements.get("couponcd"))));
         apcoupon.click();
         
+    }
+    
+    public void chkout() {
+        
         //chkout
         WebElement chkout = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Checkout")));
-        chkout.click();
+        ((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", chkout);
+
+        try {
+            chkout.click();
+        } catch (Exception e) {
+            ((JavascriptExecutor) dr).executeScript("arguments[0].click();", chkout);
+        }
         
         }
 

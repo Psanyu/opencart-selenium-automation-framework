@@ -31,7 +31,9 @@ public class PrimaryWorkflow1Sprint1MacBuy extends Baseopc {
 	   ShoppingCart acart = new ShoppingCart(dr);
 	   acart.adcart();
 
-	   acart.chkout("1", "Canada", "British Columbia", "V4B1F4", "DXCFFFFF");
+	   acart.chkoutqty("1");	   
+	   acart.chkouttax("Canada", "British Columbia", "V4B1F4");
+	   acart.chkoutcoupon("DXCFFFFF");
 
 	   SShipping confirm = new SShipping(dr);
 	   confirm.shipping("Existing", "Sam Sak, Unemployed, 26 ABC, West Chester, Pennsylvania, United States");
