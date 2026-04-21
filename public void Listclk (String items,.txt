@@ -1,0 +1,91 @@
+         /*
+         selectrf.returnformOD(OrderIDn);
+        selectrf.returnformODate("");
+        selectrf.returnformfnm("First1");
+        selectrf.returnformlnm("Last1");
+        selectrf.returnformEmail("admin@mail.com");
+        selectrf.returnformProdNm("HP LP3065");
+        selectrf.returnformProdCd("Product 21");
+        selectrf.returnformProdQty("1");
+        */
+public void Listclk (String items, String AB) {
+	 
+	 List <WebElement> mcatsel = dr.findElements(By.xpath(elements.get("mcatid")));
+     for(WebElement mcats:mcatsel) {
+         if(mcats.getText().equals(itemcat))	{
+           mcats.click();     
+	 
+ }
+
+//prodid=//a[contains(@href,'product_id')]
+mcatid=//a[contains(@class,'dropdown-toggle') and contains(@href,'category')]
+
+    String orid= dr.findElement(By.xpath(elements.get("orhid"))).getText();
+    Assert.assertEquals(orid, orvwid);
+
+/*public void returnformOD(String OrderId) {
+	WebElement Oridn= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("ordi"))));
+	String CurrentOrderId = Oridn.getAttribute(OrderId);
+	if(CurrentOrderId.isEmpty()) {
+		Oridn.sendKeys(OrderId); 
+	} 
+		
+}
+
+public void returnformODate(String OrderDate) {
+	WebElement Ordt= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("ordate"))));
+	String CurrentOrderdt = Ordt.getAttribute(OrderDate);
+	if(CurrentOrderdt.isEmpty()) {
+	Ordt.sendKeys(OrderDate);
+ }
+}
+
+public void returnformfnm(String FirstName) {
+	WebElement firstname= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("fn"))));
+	String Currentfirstname = firstname.getAttribute(FirstName);
+	if(Currentfirstname.isEmpty()) {
+	firstname.sendKeys(FirstName);
+ }
+}
+
+public void returnformlnm(String LastName) {
+	WebElement lastname= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("ln"))));
+	String Currentlastname = lastname.getAttribute(LastName);
+	if(Currentlastname.isEmpty()) {
+	lastname.sendKeys(LastName);
+ }
+}
+
+
+public void returnformEmail(String Email) {
+	WebElement email= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("Em"))));
+	String Currentemail = email.getAttribute(Email);
+	if(Currentemail.isEmpty()) {
+	email.sendKeys(Email);
+ }
+}
+
+public void returnformProdNm(String ProductName) {
+	WebElement prodname= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("Pnm"))));
+	String Currentprodname = prodname.getAttribute(ProductName);
+	if(Currentprodname.isEmpty()) {
+	prodname.sendKeys(ProductName);
+ }
+}
+
+public void returnformProdCd(String ProductCode) {
+	WebElement prodcode= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("Pcd"))));
+	String Currentcode = prodcode.getAttribute(ProductCode);
+	if(Currentcode.isEmpty()) {
+	prodcode.sendKeys(ProductCode);
+ }
+}
+
+public void returnformProdQty(String ProductQty) {
+	WebElement prodqty= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("Qt"))));
+	String Currentqty = prodqty.getAttribute(ProductQty);
+	if(Currentqty.isEmpty()) {
+	prodqty.sendKeys(ProductQty);
+ }
+}
+*/
