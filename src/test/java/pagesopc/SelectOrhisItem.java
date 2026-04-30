@@ -46,6 +46,17 @@ public void orhispgselect(){
       }
     }
 
+public String getLatestOrderIdFromHistory() {
+    WebElement firstOrderRow = wait.until(ExpectedConditions.visibilityOfElementLocated(
+        By.xpath("(//table/tbody/tr)[1]")
+    ));
+
+    String rowText = firstOrderRow.getText();
+    System.out.println("Latest order row: " + rowText);
+
+    return rowText.replaceAll("(?s).*#(\\d+).*", "$1");
+}
+
 
 }
      

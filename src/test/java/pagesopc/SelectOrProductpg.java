@@ -32,19 +32,29 @@ JavascriptExecutor jsk;
 public void oritemvw(String orvwid){	   
     List <WebElement> oritvw = dr.findElements(By.xpath(elements.get("oritvwid")));
 
+    boolean orderFound = false;
     for(WebElement orvws:oritvw) {
 
         if(orvws.getText().contains(orvwid)) {
+        	
+        	orderFound = true;
+
+            WebElement viewbtn = orvws.findElement(By.xpath(".//a[contains(@href,'order.info') or contains(@href,'order_id')]"));
+
             try {
-                WebElement viewbtn = orvws.findElement(By.xpath(".//a[contains(@title,'View')]"));
+                
                 jsk.executeScript("arguments[0].scrollIntoView(true);", viewbtn);
                 wait.until(ExpectedConditions.elementToBeClickable(viewbtn)).click();
             } catch (Exception e) {
-                WebElement viewbtn = orvws.findElement(By.xpath(".//a[contains(@title,'View')]"));
+              
                 jsk.executeScript("arguments[0].click();", viewbtn);
             }
             break;
         }
+    }
+    
+    if (!orderFound) {
+        throw new RuntimeException("Order ID not found in Order History: " + orvwid);
     }
 }
 	

@@ -82,7 +82,7 @@ return;
    WebElement atc = wait.until(ExpectedConditions.elementToBeClickable(By.id("button-cart"))); 
    atc.click(); 
    } catch (Exception e) { 
-    System.out.println("Not redirected to the Produst page"); 
+    System.out.println("Not redirected to the Product page"); 
 	} 
    
 }

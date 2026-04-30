@@ -10,6 +10,8 @@ import pagesopc.SelectReturnsForm;
 import pagesopc.Logoutopc;
 import pagesopc.SelectOrProductpg;
 import pagesopc.SelectOrReturns;
+import org.testng.Assert;
+import utilitiesopc.DBUtil;
 
 
 
@@ -23,7 +25,7 @@ public class ReturnsWorkflow1Sprint2Returns extends Baseopc {
 	    loginPg.lgn();
 	    loginPg.lgnconfirm();
 	    
-	    String OrderIDn="36";
+	    String OrderIDn="2";
 	    
         SelectOrhisItem selorhisit = new SelectOrhisItem(dr);
         selorhisit.orhispgselect();
@@ -60,6 +62,16 @@ public class ReturnsWorkflow1Sprint2Returns extends Baseopc {
         
         System.out.println("Current URL after submit: " + dr.getCurrentUrl());
         System.out.println("Page source contains success? " + dr.getPageSource().contains("Your return request has been submitted"));
+        
+        Thread.sleep(5000);
+        
+        String OrderIDn2 = DBUtil.getLatestOrderIdByEmail(config.get("email"));
+
+        boolean returnExists = DBUtil.isReturnPresent(OrderIDn2);
+
+        Assert.assertTrue(returnExists, "Return not found in DB for order: " + OrderIDn);
+
+        System.out.println("Return found in DB for order: " + OrderIDn2);
         
 	    Thread.sleep(5000);
 

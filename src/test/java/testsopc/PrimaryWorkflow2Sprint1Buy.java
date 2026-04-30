@@ -12,6 +12,9 @@ import pagesopc.SShippingAltwNew;
 import pagesopc.SelectItem2;
 import pagesopc.ShoppingCart;
 
+import org.testng.Assert;
+import utilitiesopc.DBUtil;
+
 public class PrimaryWorkflow2Sprint1Buy extends Baseopc {
 
 @Test
@@ -69,6 +72,16 @@ public class PrimaryWorkflow2Sprint1Buy extends Baseopc {
 	   
 	   Thread.sleep(3000);
 	   confirm.confirmorder();
+	   
+	   String OrderIDn = DBUtil.getLatestOrderIdByEmail(config.get("email"));
+
+	   Assert.assertNotNull(OrderIDn, "No order found in DB for email: " + config.get("email"));
+
+	   boolean orderExists = DBUtil.isOrderPresent(OrderIDn);
+
+	   Assert.assertTrue(orderExists, "Order not found in DB: " + OrderIDn);
+
+	   System.out.println("Latest order found in DB: " + OrderIDn);
 	   
 	    Thread.sleep(3000);
 
