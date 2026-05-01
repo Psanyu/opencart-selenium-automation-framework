@@ -10,6 +10,12 @@ import pagesopc.SelectReturnsForm;
 import pagesopc.Logoutopc;
 import pagesopc.SelectOrProductpg;
 import pagesopc.SelectOrReturns;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import java.time.Duration;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import utilitiesopc.DBUtil;
 
@@ -25,7 +31,8 @@ public class ReturnsWorkflow1Sprint2Returns extends Baseopc {
 	    loginPg.lgn();
 	    loginPg.lgnconfirm();
 	    
-	    String OrderIDn="2";
+	    String OrderIDn = DBUtil.getLatestOrderIdByEmail(config.get("email"));
+	    System.out.println("Using latest Order ID for return flow: " + OrderIDn);
 	    
         SelectOrhisItem selorhisit = new SelectOrhisItem(dr);
         selorhisit.orhispgselect();
@@ -60,18 +67,22 @@ public class ReturnsWorkflow1Sprint2Returns extends Baseopc {
         
         selectrf.returnFormSubmit();
         
+        WebDriverWait wait = new WebDriverWait(dr, Duration.ofSeconds(10));
+        
+        WebElement successMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Thank you for submitting your return request')]")));
+
+        Assert.assertTrue(successMsg.isDisplayed(), "Return success message not displayed");
+        
         System.out.println("Current URL after submit: " + dr.getCurrentUrl());
         System.out.println("Page source contains success? " + dr.getPageSource().contains("Your return request has been submitted"));
         
         Thread.sleep(5000);
         
-        String OrderIDn2 = DBUtil.getLatestOrderIdByEmail(config.get("email"));
-
-        boolean returnExists = DBUtil.isReturnPresent(OrderIDn2);
+        boolean returnExists = DBUtil.isReturnPresent(OrderIDn);
 
         Assert.assertTrue(returnExists, "Return not found in DB for order: " + OrderIDn);
 
-        System.out.println("Return found in DB for order: " + OrderIDn2);
+        System.out.println("Backend validation passed: Return found in DB for order: " + OrderIDn);
         
 	    Thread.sleep(5000);
 

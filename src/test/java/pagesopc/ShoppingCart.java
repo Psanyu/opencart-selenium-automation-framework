@@ -50,41 +50,62 @@ public class ShoppingCart{
     }
         
     public void chkouttax(String sci, String szi, String zci) throws Exception {
-        
-        WebElement estimatetax = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("estax"))));
-        estimatetax.click();
-        
-        //Wait and Select country
+
+        WebElement estimatetax = wait.until(ExpectedConditions.presenceOfElementLocated(
+            By.xpath(elements.get("estax"))
+        ));
+
+        ((JavascriptExecutor) dr).executeScript(
+            "arguments[0].scrollIntoView({block:'center'});", estimatetax
+        );
+
+        wait.until(ExpectedConditions.elementToBeClickable(estimatetax));
+
+        try {
+            estimatetax.click();
+            System.out.println("Estimate tax clicked using normal click");
+        } catch (Exception e) {
+            ((JavascriptExecutor) dr).executeScript("arguments[0].click();", estimatetax);
+            System.out.println("Estimate tax clicked using JS fallback");
+        }
+
+        // Wait and Select country
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("selectcountry"))));
         Select sc = new Select(dr.findElement(By.xpath(elements.get("selectcountry"))));
+
         List<WebElement> options = sc.getOptions();
-        for (WebElement option:options){ 
-        	if (option.getText().equals(sci)) { 
-        		option.click();
-        		} 
-        	}
-        
-        //Wait and Select zone
+        for (WebElement option : options) {
+            if (option.getText().equals(sci)) {
+                option.click();
+                break;
+            }
+        }
+
+        // Wait and Select zone
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("selectzone"))));
         Select sz = new Select(dr.findElement(By.xpath(elements.get("selectzone"))));
+
         List<WebElement> optionz = sz.getOptions();
-        for (WebElement option:optionz){ 
-        	if (option.getText().equals(szi)) { 
-        		option.click();
-        		} 
-        	}
-        
-        //Fill zipcode
-        WebElement zipcode = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elements.get("fillpostcode"))));
+        for (WebElement option : optionz) {
+            if (option.getText().equals(szi)) {
+                option.click();
+                break;
+            }
+        }
+
+        // Fill zipcode
+        WebElement zipcode = wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath(elements.get("fillpostcode"))
+        ));
         zipcode.clear();
         zipcode.sendKeys(zci);
-                
+
         WebElement gquote = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elements.get("getquote"))));
         gquote.click();
-        
+
         WebElement fsr = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elements.get("flatshiprate"))));
         fsr.click();
-        
+
         WebElement asp = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elements.get("applyshipping"))));
         asp.click();
     }
