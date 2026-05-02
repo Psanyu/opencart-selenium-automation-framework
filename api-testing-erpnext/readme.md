@@ -17,3 +17,5 @@
 
 - curl
 - ERPNext REST APIs
+
+  Please Note: for API testing REST Assured and TestNG related tests look in the Java folder
