@@ -1,0 +1,9 @@
+<suite name="ERPNext API Suite">
+  <test name="API Tests">
+    <classes>
+      <class name="APItesting.APIt01Login"/>
+      <class name="APItesting.APIt02GetItems"/>
+      <class name="APItesting.APIt03CreateSalesOrder"/>
+    </classes>
+  </test>
+</suite>
