@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-05-02T17:30:45 PDT" name="Default suite" finished-at="2026-05-02T17:30:47 PDT" duration-ms="1910">
+    <groups>
+    </groups>
+    <test started-at="2026-05-02T17:30:45 PDT" name="Default test" finished-at="2026-05-02T17:30:47 PDT" duration-ms="1910">
+      <class name="APItesting.APIt03CreateSalesOrder">
+        <test-method signature="verifyCreateSalesOrderApi()[pri:0, instance:APItesting.APIt03CreateSalesOrder@3754a4bf]" started-at="2026-05-02T17:30:45 PDT" name="verifyCreateSalesOrderApi" finished-at="2026-05-02T17:30:47 PDT" duration-ms="1868" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyCreateSalesOrderApi -->
+      </class> <!-- APItesting.APIt03CreateSalesOrder -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
